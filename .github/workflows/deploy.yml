@@ -69,3 +69,9 @@ jobs:
       - name: Deploy website to S3
         run: |
           aws s3 sync build/ s3://devops-cicd-assignment-anand50ad --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E1WHFL703NI7Q5 \
+            --paths "/*"
