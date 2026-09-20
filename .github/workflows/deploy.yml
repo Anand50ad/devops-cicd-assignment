@@ -11,7 +11,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Show project files
+        run: |
+          echo "Files in repository:"
+          ls -la
 
       - name: Test website files
         run: |
