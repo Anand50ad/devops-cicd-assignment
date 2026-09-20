@@ -16,7 +16,7 @@ jobs:
       - name: Test website files
         run: |
           test -f index.html
-          test -f style.css
+          test -f styles.css
           test -f script.js
           echo "All required website files are present."
 
@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir build
           cp index.html build/
-          cp style.css build/
+          cp styles.css build/
           cp script.js build/
 
       - name: Verify build
