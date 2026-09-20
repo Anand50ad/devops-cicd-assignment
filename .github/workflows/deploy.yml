@@ -13,9 +13,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show project files
+      - name: Test website files
         run: |
-          echo "Current directory:"
-          pwd
-          echo "Repository files:"
-          find . -maxdepth 3 -type f
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "All required website files are present."
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build deployment package
+        run: |
+          mkdir build
+          cp index.html build/
+          cp style.css build/
+          cp script.js build/
+
+      - name: Verify build
+        run: |
+          ls -la build
